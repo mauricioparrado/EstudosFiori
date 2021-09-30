@@ -1,0 +1,179 @@
+{
+	"_version": "1.32.0",
+
+	"sap.app": {
+		"id": "pws.ce.projectestudos210629",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"resources": "resources.json",
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/ZYTR_ESTUDO_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"pj1Service": {
+				"uri": "sap/opu/odata/SAP/ZYTR_PJ1_SRV/?sap-client=201",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"odataService": {
+				"uri": "https://services.odata.org/V3/Northwind/Northwind.svc/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
+		}
+	},
+
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://task",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "pws.ce.projectestudos210629.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+
+		"dependencies": {
+			"minUI5Version": "1.66.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.f": {}
+			}
+		},
+
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "pws.ce.projectestudos210629.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"preload": true
+			},
+			"pj1": {
+				"dataSource": "pj1Service",
+				"preload": true
+			},
+			"odata": {
+				"dataSource": "odataService",
+				"preload": true
+			}
+		},
+
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "pws.ce.projectestudos210629.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"bypassed": {
+					"target": ["notFound"]
+				},
+				"async": true
+			},
+
+			"routes": [
+				{
+					"pattern": "",
+					"name": "worklist",
+					"target": ["worklist"]
+				},
+				{
+					"pattern": "PESSOASet/{objectId}",
+					"name": "object",
+					"target": ["object"]
+				},
+				{
+					"pattern": "pagina",
+					"name": "pagina",
+					"target": ["pagina"]
+				},
+				{
+					"pattern": "productlist",
+					"name": "productlist",
+					"target": "productlist"
+				},
+				{
+					"pattern": "customerlist",
+					"name": "customerlist",
+					"target": "customerlist"
+				}
+			],
+
+			"targets": {
+				"worklist": {
+					"viewName": "Worklist",
+					"viewId": "worklist",
+					"viewLevel": 1,
+					"title": "{i18n>worklistViewTitle}"
+				},
+				"object": {
+					"viewName": "Object",
+					"viewId": "object",
+					"viewLevel": 2,
+					"title": "{i18n>objectViewTitle}"
+				},
+				"objectNotFound": {
+					"viewName": "ObjectNotFound",
+					"viewId": "objectNotFound"
+				},
+				"notFound": {
+					"viewName": "NotFound",
+					"viewId": "notFound"
+				},
+				"pagina": {
+					"viewName": "Pagina",
+					"viewId": "pagina"
+				},
+				"productlist": {
+					"viewName": "Productlist",
+					"viewId": "productlist",
+					"viewLevel": 1
+				},
+				"customerlist": {
+					"viewName": "Customerlist",
+					"viewId": "customerlist"
+				}
+			}
+		}
+	}
+}

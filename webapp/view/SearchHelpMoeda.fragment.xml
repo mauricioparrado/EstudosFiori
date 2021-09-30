@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<SelectDialog
+		title="Moedas"
+		class="sapUiPopupWithPadding"
+		items="{pj1>/Moedas}"
+		search="_handleValueHelpSearch"
+		confirm="_handleValueHelpClose"
+		cancel="_handleValueHelpClose">
+		<StandardListItem
+			title="{pj1>Waers}"
+			description="{pj1>Ltext}" />
+	</SelectDialog>
+</core:FragmentDefinition>

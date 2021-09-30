@@ -1,0 +1,27 @@
+<mvc:View
+	controllerName="pws.ce.projectestudos210629.controller.Pagina"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.f"
+	xmlns:s="sap.f.semantic">
+
+	<s:SemanticPage
+		id="page"
+		headerPinnable="false"
+		toggleHeaderOnTitleClick="false"
+		busy="{objectView>/busy}"
+		busyIndicatorDelay="{objectView>/delay}">
+
+		<s:titleHeading>
+			<Title
+				text="Entrando na pagina PAGINA"
+				level="H2"/>
+			<Text id="txtLorem" text="lorem ipsum xxxxxxxx" />
+			
+				
+		</s:titleHeading>
+
+		<s:content>
+		</s:content>
+	</s:SemanticPage>
+</mvc:View>

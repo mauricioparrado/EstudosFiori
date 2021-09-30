@@ -1,0 +1,65 @@
+<mvc:View
+	controllerName="pws.ce.projectestudos210629.controller.Object"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:semantic="sap.f.semantic">
+
+	<semantic:SemanticPage
+		id="page"
+		headerPinnable="false"
+		toggleHeaderOnTitleClick="false"
+		busy="{objectView>/busy}"
+		busyIndicatorDelay="{objectView>/delay}">
+
+		<semantic:titleHeading>
+			<Title
+				text="{Codigo}"
+				level="H2"/>
+		</semantic:titleHeading>
+
+		<semantic:headerContent>
+			<ObjectNumber
+				number="{
+					path: 'Codigo',
+					formatter: '.formatter.numberUnit'
+				}"
+			/>
+		</semantic:headerContent>
+		
+		<semantic:content>
+			<l:VerticalLayout class="sapUiContentPadding" width="100%">
+					<Label text="{i18n>pessoa}" labelFor="pessoaInput" />
+					
+					<Input
+						id="customData1"
+						value="{modelCustom>/Nome}"
+						>
+					</Input>
+
+					<Input
+						id="pessoaInput"
+						placeholder="Inserir Pessoa"
+						value="{Codigo}"
+						>
+					</Input>
+					<Button type="Emphasized" text="Executar" press="onCustomPress" />
+
+					<MessageStrip
+						text="Default (Information) with default icon and close button:"
+						showIcon="true"
+						showCloseButton="true"
+						class="sapUiMediumMarginBottom">
+					</MessageStrip>
+
+				</l:VerticalLayout>
+		</semantic:content>
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+
+	</semantic:SemanticPage>
+
+</mvc:View>

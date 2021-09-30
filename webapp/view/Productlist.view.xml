@@ -1,0 +1,108 @@
+<mvc:View controllerName="pws.ce.projectestudos210629.controller.Productlist"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:fb="sap.ui.comp.filterbar">
+
+	<semantic:SemanticPage id="page" headerPinnable="true" toggleHeaderOnTitleClick="true" preserveHeaderStateOnScroll="false" titleAreaShrinkRatio="1:1.6:1.6" showFooter="true">
+
+		<semantic:titleHeading>
+			<Title text="{i18n>productlistTitle}" level="H2"/>
+		</semantic:titleHeading>
+	
+		<semantic:headerContent>
+			<layout:HorizontalLayout allowWrapping="true">
+				<layout:VerticalLayout class="sapUiMediumMarginEnd">
+				<fb:FilterBar id="filterbar" reset="onReset" search="onSearch" useToolbar="false" showGoOnFB="false">
+							<fb:filterItems>
+								<fb:FilterItem name="A" label="Codigo">
+									<fb:control>
+											<Input id="codigoFilter" type="Text" change="onFilterChange"/>
+									</fb:control>				
+								</fb:FilterItem>								
+								<fb:FilterItem name="B" label="Descrição">
+									<fb:control>
+											<Input id="descricaoFilter" type="Text" change="onFilterChange"/>
+									</fb:control>				
+								</fb:FilterItem>				
+								<fb:FilterItem name="C" label="Moeda">
+									<fb:control>
+										 <Input
+                                                id="moedaFilter"
+                                                type="Text"
+                                                placeholder="Favor digite codigo da moeda"
+                                                change="onFilterChange"
+                                                showSuggestion="true"
+                                                showValueHelp="true"
+                                                valueHelpRequest="handleValueHelp"
+                                                suggestionItems="{pj1/Moedas}" >
+                                                <StandardListItem
+													title="{pj1>Waers}"
+                                                    description="{pj1>Ltext}" />
+                                            </Input>	
+									</fb:control>				
+								</fb:FilterItem>
+							</fb:filterItems>
+						</fb:FilterBar>
+				</layout:VerticalLayout>
+			</layout:HorizontalLayout>
+		</semantic:headerContent>
+
+		<semantic:content>
+			<Table id="table" width="auto" items="{
+					path: 'pj1>/Produtos2',
+					sorter: {
+						path: 'Codigo',
+						descending: false
+					}
+				}" noDataText="{productlistView>/tableNoDataText}" busyIndicatorDelay="{productlistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished">
+
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title id="tableHeader" text="{productlistView>/productlistTableTitle}" level="H3"/>
+						<ToolbarSpacer />
+						<SearchField id="searchField" tooltip="{i18n>productlistSearchTooltip}" search=".onSearch">
+							<layoutData>
+								<OverflowToolbarLayoutData maxWidth="200px" priority="NeverOverflow"/>
+							</layoutData>
+						</SearchField>
+					</OverflowToolbar>
+				</headerToolbar>
+
+				<columns>
+					<Column id="nameColumn">
+						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+					</Column>
+					<Column visible="{= !${device>/system/phone}}">
+						<Text text="Descricao" />
+					</Column>
+					<Column visible="{= !${device>/system/phone}}">
+						<Text text="Moeda" />
+					</Column>
+					<Column visible="{= !${device>/system/phone}}">
+						<Text text="Valor" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press=".onPress">
+						<cells>
+							<ObjectIdentifier title="{pj1>Codigo}"/>
+							<Text text="{pj1>Descricao}" />
+							<Text text="{pj1>Moeda}" />
+							<Text text="{pj1>Valorunitario}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+
+	</semantic:SemanticPage>
+
+</mvc:View>
