@@ -51,7 +51,8 @@
 				updateFinished=".onUpdateFinished">
 
 				<headerToolbar>
-					<OverflowToolbar>
+					 <OverflowToolbar>
+					
 						<Title
 							id="tableHeader"
 							text="{i18n>worklistTableTitle}"

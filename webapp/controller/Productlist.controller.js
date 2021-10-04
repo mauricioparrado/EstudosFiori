@@ -241,6 +241,7 @@ sap.ui.define([
             }
 			console.log("_handleValueHelpClose - items", oEvent.getSource().getBinding("items"));
             oEvent.getSource().getBinding("items").filter([]);
+			this.onFilterChange();
         }
 
 	});
