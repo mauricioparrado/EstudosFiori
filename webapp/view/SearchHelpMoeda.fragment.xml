@@ -9,7 +9,6 @@
 		search="_handleValueHelpSearch"
 		confirm="_handleValueHelpClose"
 		cancel="_handleValueHelpClose"
-        app:NomeValueHelp="SearchValueHelpMoeda"
         app:filterKey="Waers">
 		<StandardListItem
 			title="{pj1>Waers}"

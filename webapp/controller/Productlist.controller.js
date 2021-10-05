@@ -194,8 +194,9 @@ sap.ui.define([
 		handleValueHelp: function(oEvent) {
             var oSource = oEvent.getSource();
             var sInputValue = oSource.getValue();
+			var key = oSource.data().filterKey;
             this.inputId = oSource.getId();
-            console.log("oSource", oSource, "oSource Data",oSource.data());
+            console.log("oSource", oSource, "oSource Data",oSource.data(), "Value Help",oSource.data().nomeValueHelp);
             // create value help dialog
             if (!this._valueHelpDialog) {
 				// this._valueHelpDialog = sap.ui.xmlfragment(
@@ -204,15 +205,16 @@ sap.ui.define([
                 // );
 
                 this._valueHelpDialog = sap.ui.xmlfragment(
-                    "pws.ce.projectestudos210629.view.SearchHelpMoeda",
+                    "pws.ce.projectestudos210629.view."+oSource.data().nomeValueHelp,
                     this
                 );
                 this.getView().addDependent(this._valueHelpDialog);
             }
 
             // create a filter for the binding
+			console.log("oSource Data CHAVE",key);
             this._valueHelpDialog.getBinding("items").filter([new Filter(
-                "Waers",
+                key,
                 sap.ui.model.FilterOperator.Contains, sInputValue
             )]);
 
@@ -223,9 +225,11 @@ sap.ui.define([
         _handleValueHelpSearch: function(oEvent) {
             var sValue = oEvent.getParameter("value");
             var oSource = oEvent.getSource();
+			var key = oSource.data().filterKey;
+			console.log("oSource", oSource, "oSource Data",oSource.data(), "Value Help",oSource.data().nomeValueHelp);
 
             var oFilter = new Filter(
-                "Waers",
+				key,
                 sap.ui.model.FilterOperator.Contains, sValue
             );
 			console.log("_handleValueHelpSearch", sValue);

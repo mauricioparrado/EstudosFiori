@@ -4,7 +4,8 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:layout="sap.ui.layout"
 	xmlns:semantic="sap.f.semantic"
-	xmlns:fb="sap.ui.comp.filterbar">
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 
 	<semantic:SemanticPage id="page" headerPinnable="true" toggleHeaderOnTitleClick="true" preserveHeaderStateOnScroll="false" titleAreaShrinkRatio="1:1.6:1.6" showFooter="true">
 
@@ -37,7 +38,9 @@
                                                 showSuggestion="true"
                                                 showValueHelp="true"
                                                 valueHelpRequest="handleValueHelp"
-                                                suggestionItems="{pj1/Moedas}" >
+                                                suggestionItems="{pj1/Moedas}"
+												app:nomeValueHelp="SearchHelpMoeda"
+        										app:filterKey="Waers">
                                                 <StandardListItem
 													title="{pj1>Waers}"
                                                     description="{pj1>Ltext}" />
