@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: '1.0'
+metadata:
+  name: 'projectestudos210629'
+type: application
+ui5Theme: sap_fiori_3
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://sapbw:8004
+          client: "201"
+          user: zytr
+          password: zytr000
+        app:
+          name: ZESTUDOSFIORI01
+          description: Estudos Fiori
+          package: ZP_ZYTR_ESTUDO
+          transport: F9DK903766
+         
+

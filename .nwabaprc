@@ -1,0 +1,12 @@
+{
+    "base": "./dist",
+    "conn_usestrictssl": false,
+    "conn_server": "http://sapbw:8004",
+    "conn_client": "201",
+    "conn_user": "zytr",
+    "conn_password": "zytr000",
+    "abap_package": "ZP_ZYTR_ESTUDO",
+    "abap_bsp": "ZESTUDOSFIORI",
+    "abap_bsp_text": "UI5 Estudos Fiori",
+    "abap_transport": "F9DK903766"
+}
